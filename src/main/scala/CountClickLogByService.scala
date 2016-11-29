@@ -9,7 +9,7 @@ object CountClickLogByService {
     val sparkConf = new SparkConf().setAppName("My Spark Job").setMaster("local")
     val sc = new SparkContext(sparkConf)
 
-    val input = sc.textFile("file:///Users/1001948/Documents/recopick/log/2016-04-04_013000_clicklog.txt")
+    val input = sc.textFile("data/2016-04-04_013000_clicklog.txt")
 
     val pairsByServiceID = input.map( x => (x.split("\t")(2), x))
     val countByKey = pairsByServiceID.sortByKey().countByKey()
